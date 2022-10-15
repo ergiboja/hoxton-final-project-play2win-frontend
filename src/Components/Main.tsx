@@ -5,34 +5,34 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 
-function Main() {
-  const [countries, setCountries] = useState([])
+function Main({ countries, setEndpoint, endpoint, matches }) {
 
 
 
-  const Token = '667879c15ce548e5b32ab32d6e4f9610'
-  useEffect(() => {
-    fetch('https://api.football-data.org/v2/areas', { headers: { 'X-Auth-Token': Token } })
-      .then((response) => response.json())
-      .then((data) => 
-      setCountries(data));
+  // const Token = '667879c15ce548e5b32ab32d6e4f9610'
+  // useEffect(() => {
+  //   fetch('https://api.football-data.org/v2/areas', { headers: { 'X-Auth-Token': Token } })
+  //     .then((response) => response.json())
+  //     .then((data) => 
+  //     setCountries(data.areas));
 
-  }, [])
-  console.log(countries)
+  // }, [])
+
+
   return (
     <section className="mainsection">
       <header className="mainheader">
         <div className="navbar">
           <div className="navbarleftside">
-            <img src="resources/mainlogo.png" className="headerlogo" />
+            <img src="/resources/mainlogo.png" className="headerlogo" />
 
           </div>
           <div className="navbarrightside">
-            <Link to="/sign_up"><a className="balance__button-link">My Bets</a></Link>
+            <Link to="/mybets"><a className="balance__button-link">My Bets</a></Link>
             <h3 className="balanceh3">Balance:  20 $</h3>
             <h3 className="balanceh3">Ergi001</h3>
 
-            <img src="resources/logout.png" className="logoutimg" />
+            <img src="/resources/logout.png" className="logoutimg" />
 
 
           </div>
@@ -45,19 +45,36 @@ function Main() {
           <div className="leftseccolumn">
             <ul className="leftsecul">
               <li className="leftsecli">
+
                 <img className="leftsecimg" src="" />
-                <h3 className="leftsech3">Football</h3>
+
+
+                <h3 className="leftsech3">Leagues</h3>
 
               </li>
-              {countries.areas.map((area)=>  (
-                    <li className="leftsecliareas">
-                    <img className="leftsecimg"    src={area.ensignUrl}/>
-                    <h3 className="leftsech3areas">{area.name}</h3>
-    
-                  </li>
+              {countries.map((area) => (
+                <li key={area.key} className="leftsecliareas" onClick={(() => {
+
+                  setEndpoint(area.key)
+
+                })}>
+
+
+                  <div className="leftsecliimg">
+
+                    {/* <img className="leftsecimg"    src={area.ensignUrl}/> */}
+                  </div>
+
+                  <div className="leftsecliname">
+                    <h3 className="leftsech3areas">{area.title}</h3>
+
+                  </div>
+
+
+                </li>
               )
-              
-              
+
+
               )}
 
 
@@ -75,11 +92,47 @@ function Main() {
 
         </section>
         <section className="middlesec">
+          <div className="middleseccontainer">
+            <div className="middcontainerheader"><h3 className="matchresult">Match Result</h3></div>
+            {matches.map((match)=>(
+               <div className="matchcontainer" >
+               <div className="matchcontainerheader">
+                 <div className="matchcontainerheaderleft"><h1 className="matchheader">{match.home_team}</h1></div>
+                 <div className="matchcontainerheadermid"><h1 className="matchheader">VS</h1></div>
+                 <div className="matchcontainerheaderright">
+                   <h1 className="matchheader">{match.away_team}</h1>
+                 </div>
+                 <div className="matchcontainerheadertime">
+                   <h1 className="matchheaderdate">{match.commence_time}</h1>
+                 </div>
+ 
+ 
+               </div>
+               <div className="matchcontainerodds">
+                 <button className="oddbtn" >
+                   <div className="oddbtnleft">1</div>
+                   <div className="oddbtnright"></div>
+                 </button>
+                 <button className="oddbtn" >
+                   <div className="oddbtnleft">x</div>
+                   <div className="oddbtnright">2.90</div>
+                 </button>
+                 <button className="oddbtn" >
+                   <div className="oddbtnleft">2</div>
+                   <div className="oddbtnright">3.0</div>
+ 
+                 </button>
+               </div>
+ 
+ 
+             </div>
+            )
+
+            )}
+           
 
 
-
-
-
+          </div>
 
 
 
