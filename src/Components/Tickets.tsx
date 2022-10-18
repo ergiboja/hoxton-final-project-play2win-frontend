@@ -32,7 +32,161 @@ function  Tickets(){
 
       </header>
       <section className="ticketmain">
-        
+        <div className="ticketmainheader">
+          <h1 className="ticketh1">My Bets</h1>
+        </div>
+        <div className="ticketcontainer">
+          <ul className="ticketul">
+            <li className="ticketli">
+              <p className="ticketp">Date</p>
+              <p className="ticketp">Ticket id</p>
+              <p className="ticketp">Ammount</p>
+              <p className="ticketp">Odd</p>
+              <p className="ticketp">Payout</p>
+              <p className="ticketp">Status</p>
+
+
+              
+            </li>
+            <li className="ticketsli">
+            <p className="tickettext">22-08-29</p>
+              <p className="tickettext">22</p>
+              <p className="tickettext">300$</p>
+              <p className="tickettext">X31</p>
+              <p className="tickettext">6000$</p>
+              <p className="tickettext">Pending</p>
+              
+            </li>
+            <li className="ticketsli">
+            <p className="tickettext">22-08-29</p>
+              <p className="tickettext">22</p>
+              <p className="tickettext">300$</p>
+              <p className="tickettext">X31</p>
+              <p className="tickettext">6000$</p>
+              <p className="tickettext">Pending</p>
+              
+            </li>
+            <li className="ticketsli">
+            <p className="tickettext">22-08-29</p>
+              <p className="tickettext">22</p>
+              <p className="tickettext">300$</p>
+              <p className="tickettext">X31</p>
+              <p className="tickettext">6000$</p>
+              <p className="tickettext">Pending</p>
+              
+            </li>
+            <li className="ticketsli">
+            <p className="tickettext">22-08-29</p>
+              <p className="tickettext">22</p>
+              <p className="tickettext">300$</p>
+              <p className="tickettext">X31</p>
+              <p className="tickettext">6000$</p>
+              <p className="tickettext">Pending</p>
+              
+            </li>
+            <li className="ticketsli">
+            <p className="tickettext">22-08-29</p>
+              <p className="tickettext">22</p>
+              <p className="tickettext">300$</p>
+              <p className="tickettext">X31</p>
+              <p className="tickettext">6000$</p>
+              <p className="tickettext">Pending</p>
+              
+            </li>
+            <li className="ticketsli">
+            <p className="tickettext">22-08-29</p>
+              <p className="tickettext">22</p>
+              <p className="tickettext">300$</p>
+              <p className="tickettext">X31</p>
+              <p className="tickettext">6000$</p>
+              <p className="tickettext">Pending</p>
+              
+            </li>
+            <li className="ticketsli">
+            <p className="tickettext">22-08-29</p>
+              <p className="tickettext">22</p>
+              <p className="tickettext">300$</p>
+              <p className="tickettext">X31</p>
+              <p className="tickettext">6000$</p>
+              <p className="tickettext">Pending</p>
+              
+            </li>
+            <li className="ticketsli">
+            <p className="tickettext">22-08-29</p>
+              <p className="tickettext">22</p>
+              <p className="tickettext">300$</p>
+              <p className="tickettext">X31</p>
+              <p className="tickettext">6000$</p>
+              <p className="tickettext">Pending</p>
+              
+            </li>
+            <li className="ticketsli">
+            <p className="tickettext">22-08-29</p>
+              <p className="tickettext">22</p>
+              <p className="tickettext">300$</p>
+              <p className="tickettext">X31</p>
+              <p className="tickettext">6000$</p>
+              <p className="tickettext">Pending</p>
+              
+            </li>
+            <li className="ticketsli">
+            <p className="tickettext">22-08-29</p>
+              <p className="tickettext">22</p>
+              <p className="tickettext">300$</p>
+              <p className="tickettext">X31</p>
+              <p className="tickettext">6000$</p>
+              <p className="tickettext">Pending</p>
+              
+            </li>
+            <li className="ticketsli">
+            <p className="tickettext">22-08-29</p>
+              <p className="tickettext">22</p>
+              <p className="tickettext">300$</p>
+              <p className="tickettext">X31</p>
+              <p className="tickettext">6000$</p>
+              <p className="tickettext">Pending</p>
+              
+            </li>
+            <li className="ticketsli">
+            <p className="tickettext">22-08-29</p>
+              <p className="tickettext">22</p>
+              <p className="tickettext">300$</p>
+              <p className="tickettext">X31</p>
+              <p className="tickettext">6000$</p>
+              <p className="tickettext">Pending</p>
+              
+            </li>
+            <li className="ticketsli">
+            <p className="tickettext">22-08-29</p>
+              <p className="tickettext">22</p>
+              <p className="tickettext">300$</p>
+              <p className="tickettext">X31</p>
+              <p className="tickettext">6000$</p>
+              <p className="tickettext">Pending</p>
+              
+            </li>
+            <li className="ticketsli">
+            <p className="tickettext">22-08-29</p>
+              <p className="tickettext">22</p>
+              <p className="tickettext">300$</p>
+              <p className="tickettext">X31</p>
+              <p className="tickettext">6000$</p>
+              <p className="tickettext">Pending</p>
+              
+            </li>
+            <li className="ticketsli">
+            <p className="tickettext">22-08-29</p>
+              <p className="tickettext">22</p>
+              <p className="tickettext">300$</p>
+              <p className="tickettext">X31</p>
+              <p className="tickettext">6000$</p>
+              <p className="tickettext">Pending</p>
+              
+            </li>
+
+
+          </ul>
+        </div>
 
       </section>
       </div>

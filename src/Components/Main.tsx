@@ -5,8 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 
-function Main({ countries, setEndpoint, endpoint, matches }) {
-
+function Main({ countries, setEndpoint, endpoint, matches ,signout, currentuser }: any) {
+  const navigate = useNavigate()
 
 
   // const Token = '667879c15ce548e5b32ab32d6e4f9610'
@@ -30,9 +30,12 @@ function Main({ countries, setEndpoint, endpoint, matches }) {
           <div className="navbarrightside">
             <Link to="/mybets"><a className="balance__button-link">My Bets</a></Link>
             <h3 className="balanceh3">Balance:  20 $</h3>
-            <h3 className="balanceh3">Ergi001</h3>
+            <h3 className="balanceh3"></h3>
 
-            <img src="/resources/logout.png" className="logoutimg" />
+            <img src="/resources/logout.png" className="logoutimg"  onClick={() => {
+                signout()
+                navigate("/sign_in")
+            }} />
 
 
           </div>
@@ -94,42 +97,8 @@ function Main({ countries, setEndpoint, endpoint, matches }) {
         <section className="middlesec">
           <div className="middleseccontainer">
             <div className="middcontainerheader"><h3 className="matchresult">Match Result</h3></div>
-            {matches.map((match)=>(
-               <div className="matchcontainer" >
-               <div className="matchcontainerheader">
-                 <div className="matchcontainerheaderleft"><h1 className="matchheader">{match.home_team}</h1></div>
-                 <div className="matchcontainerheadermid"><h1 className="matchheader">VS</h1></div>
-                 <div className="matchcontainerheaderright">
-                   <h1 className="matchheader">{match.away_team}</h1>
-                 </div>
-                 <div className="matchcontainerheadertime">
-                   <h1 className="matchheaderdate">{match.commence_time}</h1>
-                 </div>
- 
- 
-               </div>
-               <div className="matchcontainerodds">
-                 <button className="oddbtn" >
-                   <div className="oddbtnleft">1</div>
-                   <div className="oddbtnright"></div>
-                 </button>
-                 <button className="oddbtn" >
-                   <div className="oddbtnleft">x</div>
-                   <div className="oddbtnright">2.90</div>
-                 </button>
-                 <button className="oddbtn" >
-                   <div className="oddbtnleft">2</div>
-                   <div className="oddbtnright">3.0</div>
- 
-                 </button>
-               </div>
- 
- 
-             </div>
-            )
+          
 
-            )}
-           
 
 
           </div>
@@ -139,7 +108,31 @@ function Main({ countries, setEndpoint, endpoint, matches }) {
         </section>
         <section className="rightsec">
 
+          <div className="betslipcontainer">
+            <div className="betslipheader">
+              <h2 className="betsliph2">BETSLIP</h2>
+              <img className="binicon" src="/resources/bin.png" />
 
+            </div>
+            <div className="betslipmain">
+              <form className="betslipform">
+                
+              <input type="number" name="ammount" className="betslipform" required placeholder="Bet Ammount:" />
+              
+
+
+              </form>
+              <h2 className="betsliptext">Total odd:     </h2>
+              <h2 className="betsliptext">Possible Win:     $</h2>
+
+
+            </div>
+            <div className="betslipfooter">
+            <a className="balance__button-link">Check Slip</a>
+            <a className="balance__button-link">Place Bet</a>
+
+            </div>
+          </div>
 
 
         </section>

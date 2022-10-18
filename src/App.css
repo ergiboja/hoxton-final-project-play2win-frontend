@@ -6,13 +6,6 @@
 
 
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
 #loginform {
   display: grid;
   grid-auto-flow: row;
@@ -147,8 +140,7 @@ h1 {
   height: 2px;
   width: 80%;
   justify-self: center;
-  content: "";
-  border-bottom: 2px solid var(--border-colour);
+ 
 }
 
 .header__nav {
@@ -239,6 +231,7 @@ a:hover {
   align-content: center;
 }
 
+
 .navbarrightside {
   width: 30vw;
   display: grid;
@@ -248,6 +241,10 @@ a:hover {
 }
 
 .rednavbar {
+  background-color: rgb(203, 67, 53);
+  height: 6vh;
+}
+.rednavbaradmin{
   background-color: rgb(203, 67, 53);
   height: 6vh;
 }
@@ -277,16 +274,78 @@ a:hover {
 }
 
 .rightsec {
+  display: grid;
+  justify-content: center;
+  padding-top: 2%;
   background-color: fff;
-  width: 15vw;
+  width: 18vw;
+  height: 82vh;
 
 
 }
+.betslipheader{
+  justify-content: space-between;
+  padding-left: 2%;
+  padding-right: 2%;
+width:17vw;
+height: 5vh;
+background-color:#cb4335 ;
+display: grid;
+grid-auto-flow: column;
+}
+.betsliph2{
+  color: #fff;
+  font-weight: 300;
+
+}
+.betslipform{
+  position: relative;
+  background-color: #fff;
+  width:10vw;
+  height:35px;
+}
+.betslipmain{
+ display: grid;
+ grid-auto-flow: row;
+  justify-content: center;
+ 
+ 
+}
+.betslipfooter{
+  padding-left: 10%;
+  justify-content: center;
+  display: grid;
+  grid-auto-flow: row;
+  row-gap: 30%;
+  width: 10vw;
+  height: 5vh;
+}
+.betsliptext{
+  color: #fff;
+  font-size: 20px;
+
+}
+.betslipform::placeholder{
+  font-size: 13px;
+  color:rgb(53,62,77) ;
+  text-align: center;
+  
+
+}
+
+.betslipcontainer{
+  background-color:rgb(53,62,77);
+  display: grid;
+  grid-auto-flow: row;
+  width: 17vw;
+  height:40vh;
+}
+
 
 .middlesec {
   background-color: fff;
   overflow-y: auto;
-  width: 65vw;
+  width: 62vw;
 }
 
 .leftsec {
@@ -483,3 +542,134 @@ a:hover {
   background: #fc6e51;
   border-radius: 10px;
 }
+.ticketmainheader{
+  justify-self: center;
+  border-bottom: solid 1px rgb(203,67,53);
+  width: 60vw;
+  height:   8vh;
+
+}
+.ticketcontainer{
+  justify-self: center;
+  width: 60vw;
+  height: 70vh;
+ 
+  
+ 
+
+}
+.ticketli{
+  list-style: none;
+  display: grid;
+  text-align: center;
+  padding-top: 1%;
+  grid-auto-flow: column;
+  background-color: rgb(0, 0, 0);
+  width: 60vw;
+  height: 5vh;
+  margin-bottom: 4px;
+  
+}
+.ticketp{
+  color: rgb(203,67,53);
+}
+.tickettext{
+color: #fff;
+}
+.ticketsli{
+  list-style: none;
+  display: grid;
+  text-align: center;
+  padding-top: 1%;
+  margin-bottom: 4px;
+  
+  grid-auto-flow: column;
+  background-color: rgb(27,32,40);
+  width: 60vw;
+  height: 5vh;
+}
+.ticketsliadmin{
+  list-style: none;
+  display: grid;
+  text-align: center;
+  padding-top: 1%;
+  margin-bottom: 4px;
+  
+  grid-auto-flow: column;
+  background-color: rgb(27,32,40);
+  width: 70vw;
+  height: 5vh;
+}
+.ticketh1{
+  font-size: 40px;
+  
+
+}
+.ticketmain{
+display: grid;
+grid-auto-flow: row;
+
+}
+
+.adminmain{
+  display: grid;
+  grid-auto-flow: column;
+  width: 100vw;
+  height: 82vh;
+}
+
+.adminleft{
+  background-color: rgb(33,37,41);
+  width: 15vw;
+
+  display: grid;
+  grid-auto-flow: row;
+  justify-content: center;
+  padding-top: 5%;
+ 
+
+ 
+}
+.adminmidd{
+  background-color: #fff;
+  display: grid;
+  padding-top: 4px;
+  width: 85vw;
+  height: 82vh;
+  justify-content: center;
+  padding-right: 10%;
+  overflow-y: auto;
+
+}
+.adminleftli{
+  
+  list-style: none;
+  width: 200px;
+  height:30px;
+  background-color: #fff;
+  text-align: center;
+  cursor: pointer;
+ 
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+.adminh1{
+  font-size: 20px;
+  font-weight: 500;
+}
+.bindiv{
+  display: grid;
+  justify-self: center;
+ 
+}
+.binicon{
+  width: 30px;
+  display: block;
+
+}
+
+
+
+
+
+
