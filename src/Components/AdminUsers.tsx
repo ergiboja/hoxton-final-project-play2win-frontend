@@ -6,6 +6,9 @@ import { Link, useNavigate } from "react-router-dom";
 function AdminUsers(){
 
     const[users,setUsers]=useState([])
+    const[userid,setUserid]=useState('')
+    console.log(userid)
+   
     useEffect(() => {
         fetch('http://localhost:4001/users')
           .then((response) => response.json())
@@ -13,7 +16,19 @@ function AdminUsers(){
             setUsers(data));
     
       }, [])
+   
+     
+    
 
+     
+  
+    useEffect(() => {
+    fetch('http://localhost:4001/user/'+userid ,{
+  method: 'DELETE',
+})
+.then(res => res.json()) // or res.json()
+.then(res => console.log(res))
+}, [userid])
 
 
 
@@ -90,7 +105,12 @@ function AdminUsers(){
                                     <p className="tickettext">{user.balance}$</p>
                                     <p className="tickettext"></p>
                                     <div className="bindiv">
-                                        <img className="binicon" src="/resources/bin.png" />
+                                        <img className="binicon" src="/resources/bin.png" onClick={()=>{
+                                      
+                                            setUserid(user.id)
+                                            location.reload()
+                                       
+                                         } }/>
                                     </div>
     
                                 </li>

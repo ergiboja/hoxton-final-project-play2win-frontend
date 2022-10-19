@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Admindashboard() {
     const [tickets, setTickets] = useState([])
+    const[ticketid,setTicketid]=useState('')
+    console.log(ticketid)
     useEffect(() => {
         fetch('http://localhost:4001/tickets')
             .then((response) => response.json())
@@ -11,7 +13,13 @@ function Admindashboard() {
                 setTickets(data));
 
     }, [])
-    console.log(tickets)
+    useEffect(() => {
+        fetch('http://localhost:4001/ticket/'+ticketid ,{
+      method: 'DELETE',
+    })
+    .then(res => res.json()) // or res.json()
+    .then(res => console.log(res))
+    }, [ticketid])
     return (
         <section className="mainsection">
             <header className="mainheader">
@@ -84,7 +92,12 @@ function Admindashboard() {
                                     <p className="tickettext">{Number(ticket.payout)}</p>
                                     <p className="tickettext">{ticket.status}</p>
                                     <div className="bindiv">
-                                        <img className="binicon" src="/resources/bin.png" />
+                                        <img className="binicon" src="/resources/bin.png" onClick={()=>{
+                                      
+                                      setTicketid(ticket.id)
+                                      location.reload()
+                                 
+                                   } }/>
                                     </div>
 
                                 </li>

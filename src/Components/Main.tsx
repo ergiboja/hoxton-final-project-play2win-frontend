@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Main({ countries, setEndpoint, endpoint, matches ,signout, currentuser }: any) {
   const navigate = useNavigate()
+  
 
 
   // const Token = '667879c15ce548e5b32ab32d6e4f9610'
@@ -29,8 +30,8 @@ function Main({ countries, setEndpoint, endpoint, matches ,signout, currentuser 
           </div>
           <div className="navbarrightside">
             <Link to="/mybets"><a className="balance__button-link">My Bets</a></Link>
-            <h3 className="balanceh3">Balance:  20 $</h3>
-            <h3 className="balanceh3"></h3>
+            <h3 className="balanceh3">Balance: {localStorage.balance} $</h3>
+            <h3 className="balanceh3">{localStorage.username}</h3>
 
             <img src="/resources/logout.png" className="logoutimg"  onClick={() => {
                 signout()
@@ -97,6 +98,42 @@ function Main({ countries, setEndpoint, endpoint, matches ,signout, currentuser 
         <section className="middlesec">
           <div className="middleseccontainer">
             <div className="middcontainerheader"><h3 className="matchresult">Match Result</h3></div>
+            
+  {matches.map((match) => (
+              <div className="matchcontainer" >
+                <div className="matchcontainerheader">
+                  <div className="matchcontainerheaderleft"><h1 className="matchheader">{match.home_team}</h1></div>
+                  <div className="matchcontainerheadermid"><h1 className="matchheader">VS</h1></div>
+                  <div className="matchcontainerheaderright">
+                    <h1 className="matchheader">{match.away_team}</h1>
+                  </div>
+                  <div className="matchcontainerheadertime">
+                    <h1 className="matchheaderdate">{match.commence_time}</h1>
+                  </div>
+
+
+                </div>
+                <div className="matchcontainerodds">
+                  <button className="oddbtn" >
+                    <div className="oddbtnleft">1</div>
+                    {/* <div className="oddbtnright">{match.bookmakers.map((bookmaker) => bookmaker.index[3](console.log(bookmaker.key)))} </div> */}
+                  </button>
+                  <button className="oddbtn" >
+                    <div className="oddbtnleft">x</div>
+                    <div className="oddbtnright">2.90</div>
+                  </button>
+                  <button className="oddbtn" >
+                    <div className="oddbtnleft">2</div>
+                    <div className="oddbtnright">3.0</div>
+
+                  </button>
+                </div>
+
+
+              </div>
+            )
+
+            )}
           
 
 

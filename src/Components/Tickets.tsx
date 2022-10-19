@@ -1,11 +1,29 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 
 
 
 
 
-function  Tickets(){
+function  Tickets({signout, currentuser}){
+  const navigate =useNavigate()
+  const[userid, setUserid]=useState('')
+  const[user,setUser]=useState()
+ 
+
+  setUserid(localStorage.id)
+
+
+  useEffect(() => {
+    fetch('http://localhost:4001/user/4' )
+        .then((response) => response.json())
+        .then((data) =>
+       
+            setUser(data));
+
+}, [])
+
+ 
     
 
 
@@ -20,10 +38,14 @@ function  Tickets(){
           </div>
           <div className="navbarrightside">
             <Link to="/index"><a className="balance__button-link">Home</a></Link>
-            <h3 className="balanceh3">Balance:  20 $</h3>
-            <h3 className="balanceh3">Ergi001</h3>
+            <h3 className="balanceh3">Balance:  {localStorage.balance} $</h3>
+            <h3 className="balanceh3">{localStorage.username}</h3>
 
-            <img src="resources/logout.png" className="logoutimg" />
+            <img src="resources/logout.png" className="logoutimg" onClick={() => {
+                signout()
+                navigate("/sign_in")
+            }} />
+
 
 
           </div>
@@ -48,141 +70,30 @@ function  Tickets(){
 
               
             </li>
-            <li className="ticketsli">
-            <p className="tickettext">22-08-29</p>
-              <p className="tickettext">22</p>
-              <p className="tickettext">300$</p>
-              <p className="tickettext">X31</p>
-              <p className="tickettext">6000$</p>
-              <p className="tickettext">Pending</p>
-              
-            </li>
-            <li className="ticketsli">
-            <p className="tickettext">22-08-29</p>
-              <p className="tickettext">22</p>
-              <p className="tickettext">300$</p>
-              <p className="tickettext">X31</p>
-              <p className="tickettext">6000$</p>
-              <p className="tickettext">Pending</p>
-              
-            </li>
-            <li className="ticketsli">
-            <p className="tickettext">22-08-29</p>
-              <p className="tickettext">22</p>
-              <p className="tickettext">300$</p>
-              <p className="tickettext">X31</p>
-              <p className="tickettext">6000$</p>
-              <p className="tickettext">Pending</p>
-              
-            </li>
-            <li className="ticketsli">
-            <p className="tickettext">22-08-29</p>
-              <p className="tickettext">22</p>
-              <p className="tickettext">300$</p>
-              <p className="tickettext">X31</p>
-              <p className="tickettext">6000$</p>
-              <p className="tickettext">Pending</p>
-              
-            </li>
-            <li className="ticketsli">
-            <p className="tickettext">22-08-29</p>
-              <p className="tickettext">22</p>
-              <p className="tickettext">300$</p>
-              <p className="tickettext">X31</p>
-              <p className="tickettext">6000$</p>
-              <p className="tickettext">Pending</p>
-              
-            </li>
-            <li className="ticketsli">
-            <p className="tickettext">22-08-29</p>
-              <p className="tickettext">22</p>
-              <p className="tickettext">300$</p>
-              <p className="tickettext">X31</p>
-              <p className="tickettext">6000$</p>
-              <p className="tickettext">Pending</p>
-              
-            </li>
-            <li className="ticketsli">
-            <p className="tickettext">22-08-29</p>
-              <p className="tickettext">22</p>
-              <p className="tickettext">300$</p>
-              <p className="tickettext">X31</p>
-              <p className="tickettext">6000$</p>
-              <p className="tickettext">Pending</p>
-              
-            </li>
-            <li className="ticketsli">
-            <p className="tickettext">22-08-29</p>
-              <p className="tickettext">22</p>
-              <p className="tickettext">300$</p>
-              <p className="tickettext">X31</p>
-              <p className="tickettext">6000$</p>
-              <p className="tickettext">Pending</p>
-              
-            </li>
-            <li className="ticketsli">
-            <p className="tickettext">22-08-29</p>
-              <p className="tickettext">22</p>
-              <p className="tickettext">300$</p>
-              <p className="tickettext">X31</p>
-              <p className="tickettext">6000$</p>
-              <p className="tickettext">Pending</p>
-              
-            </li>
-            <li className="ticketsli">
-            <p className="tickettext">22-08-29</p>
-              <p className="tickettext">22</p>
-              <p className="tickettext">300$</p>
-              <p className="tickettext">X31</p>
-              <p className="tickettext">6000$</p>
-              <p className="tickettext">Pending</p>
-              
-            </li>
-            <li className="ticketsli">
-            <p className="tickettext">22-08-29</p>
-              <p className="tickettext">22</p>
-              <p className="tickettext">300$</p>
-              <p className="tickettext">X31</p>
-              <p className="tickettext">6000$</p>
-              <p className="tickettext">Pending</p>
-              
-            </li>
-            <li className="ticketsli">
-            <p className="tickettext">22-08-29</p>
-              <p className="tickettext">22</p>
-              <p className="tickettext">300$</p>
-              <p className="tickettext">X31</p>
-              <p className="tickettext">6000$</p>
-              <p className="tickettext">Pending</p>
-              
-            </li>
-            <li className="ticketsli">
-            <p className="tickettext">22-08-29</p>
-              <p className="tickettext">22</p>
-              <p className="tickettext">300$</p>
-              <p className="tickettext">X31</p>
-              <p className="tickettext">6000$</p>
-              <p className="tickettext">Pending</p>
-              
-            </li>
-            <li className="ticketsli">
-            <p className="tickettext">22-08-29</p>
-              <p className="tickettext">22</p>
-              <p className="tickettext">300$</p>
-              <p className="tickettext">X31</p>
-              <p className="tickettext">6000$</p>
-              <p className="tickettext">Pending</p>
-              
-            </li>
-            <li className="ticketsli">
-            <p className="tickettext">22-08-29</p>
-              <p className="tickettext">22</p>
-              <p className="tickettext">300$</p>
-              <p className="tickettext">X31</p>
-              <p className="tickettext">6000$</p>
-              <p className="tickettext">Pending</p>
-              
-            </li>
+            
+            {/* {user.ticket.map((ticket)=>(  ))} */}
+  <li className="ticketsli" >
+  <p className="tickettext">22-08-29</p>
+    <p className="tickettext">22</p>
+    <p className="tickettext">300$</p>
+    <p className="tickettext">X31</p>
+    <p className="tickettext">6000$</p>
+    <p className="tickettext">Pending</p>
+    
+  </li>  
+ 
+          
+         
+
+        
+
+          
+           
+           
+         
+          
+           
+           
 
 
           </ul>

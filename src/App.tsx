@@ -17,16 +17,18 @@ function App() {
   const [countries, setCountries] = useState([])
   const [endpoint, setEndpoint] = useState("soccer_germany_bundesliga")
   const [matches, setMatches] = useState([])
-  const apiLink = 'https://api.the-odds-api.com/v4/sports/' + endpoint + '/odds/?regions=eu&oddsFormat=decimal&markets=h2h&apiKey=7068f150cf1326653cdee3c93974a561'
+  const apiLink = 'https://api.the-odds-api.com/v4/sports/' + endpoint + '/odds/?regions=eu&oddsFormat=decimal&markets=h2h&apiKey=e46e2e21d295ec100e7007f515d514c4'
   const navigate = useNavigate()
+  
+  useEffect(() => {
+    fetch('https://api.the-odds-api.com/v4/sports/?apiKey=e46e2e21d295ec100e7007f515d514c4')
+      .then((response) => response.json())
+      .then((data) =>
+     
+        setCountries(data));
 
-  // useEffect(() => {
-  //   fetch('https://api.the-odds-api.com/v4/sports/?apiKey=7068f150cf1326653cdee3c93974a561')
-  //     .then((response) => response.json())
-  //     .then((data) =>
-  //       setCountries(data));
-
-  // }, [])
+  }, [])
+ 
 
 
   useEffect(() => {
@@ -65,11 +67,23 @@ function App() {
             alert(data.error)
           } else {
             signIn(data)
-            console.log(data.user)
+          
           }
         })
     }
   }, [])
+  //@ts-ignore
+  if(currentuser) {
+  
+    localStorage.setItem('username', (currentuser.username));
+    localStorage.setItem('balance', (currentuser.balance));
+    localStorage.setItem('id', (currentuser.id));
+  }
+
+ 
+    
+ 
+ 
 
 
   return (
@@ -80,7 +94,7 @@ function App() {
         <Route path="/index" element={<Main endpoint={endpoint} countries={countries} matches={matches} setEndpoint={setEndpoint} signout={signout} currentuser={currentuser} />} />
         <Route path="/admin" element={<Adminlogin />} />
         <Route path="/admin/index" element={<Admindashboard />} />
-        <Route path="/mybets" element={<Tickets />} />
+        <Route path="/mybets" element={<Tickets signout={signout} currentuser={currentuser} />} />
         <Route path='/admin/users' element={<AdminUsers />} />
         <Route path='/admin/deposit' element={<Admindeposit />} />
 
