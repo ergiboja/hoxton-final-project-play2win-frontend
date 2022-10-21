@@ -4,8 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Admindashboard() {
     const [tickets, setTickets] = useState([])
-    const[ticketid,setTicketid]=useState('')
-    console.log(ticketid)
+    const[ticketid,setTicketid]=useState(0)
+    
+    const navigate = useNavigate()
+
+
+    
+  
     useEffect(() => {
         fetch('http://localhost:4001/tickets')
             .then((response) => response.json())
@@ -14,7 +19,7 @@ function Admindashboard() {
 
     }, [])
     useEffect(() => {
-        fetch('http://localhost:4001/ticket/'+ticketid ,{
+        fetch(`http://localhost:4001/ticket/${ticketid}` ,{
       method: 'DELETE',
     })
     .then(res => res.json()) // or res.json()
@@ -55,10 +60,7 @@ function Admindashboard() {
                         <li className="adminleftli">
                             <Link to="/admin/index"> <h1 className="adminh1">Tickets</h1></Link>
                         </li>
-                        <li className="adminleftli">
-                            <Link to="/admin/deposit">   <h1 className="adminh1">Deposit</h1></Link>
-                        </li>
-
+                       
 
 
 

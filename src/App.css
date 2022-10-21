@@ -338,7 +338,7 @@ grid-auto-flow: column;
   display: grid;
   grid-auto-flow: row;
   width: 17vw;
-  height:40vh;
+  height:48vh;
 }
 
 
@@ -668,7 +668,16 @@ grid-auto-flow: row;
 
 }
 
+.balanceinputcontainer{
+  display: block;
+  padding-bottom: 50px;
+}
 
+.balanceinput{
+width: 60px;
+height: 20px;
+
+}
 
 
 

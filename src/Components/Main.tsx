@@ -5,8 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 
-function Main({ countries, setEndpoint, endpoint, matches ,signout, currentuser }: any) {
+function Main({ countries, setEndpoint, endpoint, matches ,signout, currentuser,setOdds }: any) {
   const navigate = useNavigate()
+  
   
 
 
@@ -116,7 +117,8 @@ function Main({ countries, setEndpoint, endpoint, matches ,signout, currentuser 
                 <div className="matchcontainerodds">
                   <button className="oddbtn" >
                     <div className="oddbtnleft">1</div>
-                    {/* <div className="oddbtnright">{match.bookmakers.map((bookmaker) => bookmaker.index[3](console.log(bookmaker.key)))} </div> */}
+                    <div className="oddbtnright">2.90</div>
+    
                   </button>
                   <button className="oddbtn" >
                     <div className="oddbtnleft">x</div>
@@ -148,7 +150,12 @@ function Main({ countries, setEndpoint, endpoint, matches ,signout, currentuser 
           <div className="betslipcontainer">
             <div className="betslipheader">
               <h2 className="betsliph2">BETSLIP</h2>
-              <img className="binicon" src="/resources/bin.png" />
+              <img className="binicon" src="/resources/bin.png"onClick={()=>{
+                                      
+                                    
+                                      location.reload()
+                                 
+                                   } } />
 
             </div>
             <div className="betslipmain">
@@ -165,7 +172,7 @@ function Main({ countries, setEndpoint, endpoint, matches ,signout, currentuser 
 
             </div>
             <div className="betslipfooter">
-            <a className="balance__button-link">Check Slip</a>
+            <a className="balance__button-link">Slip</a>
             <a className="balance__button-link">Place Bet</a>
 
             </div>

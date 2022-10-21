@@ -3,38 +3,46 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 
-function AdminUsers(){
+function AdminUsers() {
 
-    const[users,setUsers]=useState([])
-    const[userid,setUserid]=useState('')
+    const [users, setUsers] = useState([])
+    const [userid, setUserid] = useState(0)
     console.log(userid)
-   
+
     useEffect(() => {
         fetch('http://localhost:4001/users')
-          .then((response) => response.json())
-          .then((data) =>
-            setUsers(data));
-    
-      }, [])
-   
-     
-    
+            .then((response) => response.json())
+            .then((data) =>
+                setUsers(data));
 
-     
-  
+    }, [])
+
+
+
+
+
+
     useEffect(() => {
-    fetch('http://localhost:4001/user/'+userid ,{
-  method: 'DELETE',
-})
-.then(res => res.json()) // or res.json()
-.then(res => console.log(res))
-}, [userid])
+        fetch(`http://localhost:4001/user/${userid}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json()) // or res.json()
+            .then(res => console.log(res))
+    }, [userid])
+    // useEffect(() => {
+    //     fetch('http://localhost:4001/user/:id', {
+    //         method: 'PATCH',
+    //     })
+    //         .then(res => res.json()) // or res.json()
+    //         .then(res => console.log(res))
+    // }, [])
 
 
 
 
-    return(
-<section className="mainsection">
+
+    return (
+        <section className="mainsection">
             <header className="mainheader">
                 <div className="navbar">
                     <div className="navbarleftside">
@@ -52,7 +60,7 @@ function AdminUsers(){
                     </div>
                 </div>
                 <div className='rednavbaradmin'>
-                    
+
 
 
 
@@ -62,15 +70,13 @@ function AdminUsers(){
             <section className="adminmain">
                 <div className="adminleft">
                     <ul className="adminleftul">
-                    <li className="adminleftli">
-                        <Link to="/admin/users">   <h1 className="adminh1">Users</h1></Link>
+                        <li className="adminleftli">
+                            <Link to="/admin/users">   <h1 className="adminh1">Users</h1></Link>
                         </li>
                         <li className="adminleftli">
-                          <Link to="/admin/index"> <h1 className="adminh1">Tickets</h1></Link>
+                            <Link to="/admin/index"> <h1 className="adminh1">Tickets</h1></Link>
                         </li>
-                        <li className="adminleftli">
-                        <Link to="/admin/deposit">   <h1 className="adminh1">Deposit</h1></Link>
-                        </li>
+                       
 
 
 
@@ -81,7 +87,7 @@ function AdminUsers(){
 
                 </div>
                 <div className="adminmidd">
-                <div className="ticketcontainer">
+                    <div className="ticketcontainer">
                         <ul className="ticketul">
                             <li className="ticketsliadmin">
                                 <p className="ticketp">User id</p>
@@ -90,44 +96,70 @@ function AdminUsers(){
                                 <p className="ticketp"></p>
                                 <p className="ticketp">Balance</p>
                                 <p className="ticketp"></p>
+                                <p className="ticketp">Add Balance</p>
+                                <p className="ticketp"></p>
                                 <p className="ticketp">Delete</p>
 
 
 
                             </li>
-                            {users.map((user)=>
-                                (
-                                    <li className="ticketsliadmin" key={user.id}>
+                            {users.map((user) =>
+                            (
+                                <li className="ticketsliadmin" key={user.id}>
                                     <p className="tickettext">{user.id}</p>
                                     <p className="tickettext"></p>
                                     <p className="tickettext">{user.username}</p>
                                     <p className="tickettext"></p>
                                     <p className="tickettext">{user.balance}$</p>
                                     <p className="tickettext"></p>
+                                    <form className="balanceform" onSubmit={(e) => {
+                    e.preventDefault()
+                    const body = {
+                        //@ts-ignore
+                        balance: Number(e.target.balance.value)
+                       
+                    } 
+                    //@ts-ignore
+                    fetch('http://localhost:4001/userupdate/'+ user.id, {
+                        method: 'PATCH',
+                        body: JSON.stringify(body),
+                        headers: {
+                          'Content-type': 'application/json; charset=UTF-8',
+                        },
+                      })
+                        .then((response) => response.json())
+                        .then((json) => console.log(json));}}>
+
+                                        <div className="balanceinputcontainer">
+                                            <input className="balanceinput" type="number" id="balance" name="balance" required placeholder="Ammount" />
+                                            <button className="balancebtn" type="submit" value="Submit">+</button>
+                                        </div>
+                                    </form>
+                                    <p className="tickettext"></p>
                                     <div className="bindiv">
-                                        <img className="binicon" src="/resources/bin.png" onClick={()=>{
-                                      
+                                        <img className="binicon" src="/resources/bin.png" onClick={() => {
+
                                             setUserid(user.id)
                                             location.reload()
-                                       
-                                         } }/>
+
+                                        }} />
                                     </div>
-    
+
                                 </li>
 
-                                )
+                            )
                             )}
-                          
-                            </ul>
-                            </div>
+
+                        </ul>
+                    </div>
 
 
 
 
 
                 </div>
-                </section>
-                </section>
+            </section>
+        </section>
     )
 }
 
