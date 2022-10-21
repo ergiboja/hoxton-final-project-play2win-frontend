@@ -5,10 +5,22 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 
-function Main({ countries, setEndpoint, endpoint, matches ,signout, currentuser,setOdds }: any) {
+function Main({ countries, setEndpoint, endpoint, matches, signout, currentuser, setOdds, odds }: any) {
   const navigate = useNavigate()
+  const [slipAmmount, setslipAmmount] = useState(0)
+  const [error, seterror] = useState("")
+  const payout= slipAmmount*odds;
   
-  
+  const date = new Date();
+
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+
+  let currentDate = `${day}-${month}-${year}`;
+  console.log(currentDate);
+  console.log(slipAmmount)
+
 
 
   // const Token = '667879c15ce548e5b32ab32d6e4f9610'
@@ -34,9 +46,9 @@ function Main({ countries, setEndpoint, endpoint, matches ,signout, currentuser,
             <h3 className="balanceh3">Balance: {localStorage.balance} $</h3>
             <h3 className="balanceh3">{localStorage.username}</h3>
 
-            <img src="/resources/logout.png" className="logoutimg"  onClick={() => {
-                signout()
-                navigate("/sign_in")
+            <img src="/resources/logout.png" className="logoutimg" onClick={() => {
+              signout()
+              navigate("/sign_in")
             }} />
 
 
@@ -99,8 +111,8 @@ function Main({ countries, setEndpoint, endpoint, matches ,signout, currentuser,
         <section className="middlesec">
           <div className="middleseccontainer">
             <div className="middcontainerheader"><h3 className="matchresult">Match Result</h3></div>
-            
-  {matches.map((match) => (
+
+            {matches.map((match) => (
               <div className="matchcontainer" >
                 <div className="matchcontainerheader">
                   <div className="matchcontainerheaderleft"><h1 className="matchheader">{match.home_team}</h1></div>
@@ -114,19 +126,28 @@ function Main({ countries, setEndpoint, endpoint, matches ,signout, currentuser,
 
 
                 </div>
-                <div className="matchcontainerodds">
-                  <button className="oddbtn" >
+                <div className="matchcontainerodds" >
+                  <button className="oddbtn" onClick={(() => {
+
+                    setOdds(odds + 1.0)
+                  })}>
                     <div className="oddbtnleft">1</div>
-                    <div className="oddbtnright">2.90</div>
-    
+                    <div className="oddbtnright">1.0</div>
+
                   </button>
-                  <button className="oddbtn" >
+                  <button className="oddbtn" onClick={(() => {
+
+                    setOdds(odds + 2.0)
+                  })} >
                     <div className="oddbtnleft">x</div>
-                    <div className="oddbtnright">2.90</div>
+                    <div className="oddbtnright">2.0</div>
                   </button>
-                  <button className="oddbtn" >
+                  <button className="oddbtn" onClick={(() => {
+
+                    setOdds(odds + 4.0)
+                  })} >
                     <div className="oddbtnleft">2</div>
-                    <div className="oddbtnright">3.0</div>
+                    <div className="oddbtnright">4.0</div>
 
                   </button>
                 </div>
@@ -136,7 +157,7 @@ function Main({ countries, setEndpoint, endpoint, matches ,signout, currentuser,
             )
 
             )}
-          
+
 
 
 
@@ -150,32 +171,58 @@ function Main({ countries, setEndpoint, endpoint, matches ,signout, currentuser,
           <div className="betslipcontainer">
             <div className="betslipheader">
               <h2 className="betsliph2">BETSLIP</h2>
-              <img className="binicon" src="/resources/bin.png"onClick={()=>{
-                                      
-                                    
-                                      location.reload()
-                                 
-                                   } } />
+              <img className="binicon" src="/resources/bin.png" onClick={() => {
+
+
+                location.reload()
+
+              }} />
 
             </div>
             <div className="betslipmain">
-              <form className="betslipform">
-                
-              <input type="number" name="ammount" className="betslipform" required placeholder="Bet Ammount:" />
-              
+              <form className="betslipform" onSubmit={(e) => {
+                    e.preventDefault()
+                    const body = {
+                        //@ts-ignore
+                        date: currentDate,
+                        //@ts-ignore
+                        ammount: slipAmmount,
+                        odd:odds,
+                        payout:payout ,
+                        userId: Number(localStorage.id),
+                    }
+                    fetch(`http://localhost:4001/ticket`, {
+                        method: `POST`,
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(body),
+                    }).then((resp) => resp.json())
+                        .then(resp=> {
+                          seterror("Succes")
+                          
+                            
+                        })
+                }}>
+
+                <input type="number" name="ammount" className="betslipform" required placeholder="Bet Ammount:"  onChange={e => setslipAmmount(Number(e.target.value))}/>
 
 
+
+
+                <h2 className="betsliptext">Total odd: x{odds}</h2>
+                <h2 className="betsliptext">Possible Win: {payout}$</h2>
+                <h3 className="confirmtext">{error}</h3>
+                <div className="betslipfooter">
+             
+             <button className="balance__button-link" type="submit" value="Submit">Place Bet</button>
+
+           </div>
+                  
               </form>
-              <h2 className="betsliptext">Total odd:     </h2>
-              <h2 className="betsliptext">Possible Win:     $</h2>
-
 
             </div>
-            <div className="betslipfooter">
-            <a className="balance__button-link">Slip</a>
-            <a className="balance__button-link">Place Bet</a>
-
-            </div>
+           
           </div>
 
 

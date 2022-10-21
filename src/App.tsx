@@ -125,7 +125,7 @@ console.log(matches)
       <Routes>
         <Route path="/sign_in" element={<Login  signIn={signIn}/>} />
         <Route path="/sign_up" element={<Register signIn={signIn}/>} />
-        <Route path="/index" element={<Main endpoint={endpoint} countries={countries} matches={matches} setEndpoint={setEndpoint} signout={signout} currentuser={currentuser} setOdds={setOdds} />} />
+        <Route path="/index" element={<Main endpoint={endpoint} countries={countries} matches={matches} setEndpoint={setEndpoint} signout={signout} currentuser={currentuser} setOdds={setOdds} odds={odds} />} />
         <Route path="/admin" element={<Adminlogin />} />
         <Route path="/admin/index" element={<Admindashboard />} />
         <Route path="/mybets" element={<Tickets signout={signout} currentuser={currentuser}  userTicket={userTicket}/>} />

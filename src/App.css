@@ -308,11 +308,13 @@ grid-auto-flow: column;
  display: grid;
  grid-auto-flow: row;
   justify-content: center;
- 
+  padding-bottom: 50%;
  
 }
 .betslipfooter{
   padding-left: 10%;
+  padding-bottom: 20%;
+ 
   justify-content: center;
   display: grid;
   grid-auto-flow: row;
@@ -678,7 +680,10 @@ width: 60px;
 height: 20px;
 
 }
-
+.confirmtext{
+  font-size: 40px;
+  
+}
 
 
 
